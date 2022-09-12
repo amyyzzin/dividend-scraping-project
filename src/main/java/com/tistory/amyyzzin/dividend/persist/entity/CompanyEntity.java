@@ -1,14 +1,12 @@
 package com.tistory.amyyzzin.dividend.persist.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.tistory.amyyzzin.dividend.model.Company;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import javax.persistence.*;
 
 @Entity(name = "COMPANY")
 @Getter
@@ -25,4 +23,8 @@ public class CompanyEntity {
 
 	private String name;
 
+	public CompanyEntity(Company company) {
+		this.ticker = company.getTicker();
+		this.name = company.getName();
+	}
 }
