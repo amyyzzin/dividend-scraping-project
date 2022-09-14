@@ -4,7 +4,6 @@ import com.tistory.amyyzzin.dividend.model.Company;
 import com.tistory.amyyzzin.dividend.model.constants.CacheKey;
 import com.tistory.amyyzzin.dividend.persist.entity.CompanyEntity;
 import com.tistory.amyyzzin.dividend.service.CompanyService;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;

@@ -19,5 +19,4 @@ public class Dividend {
     private LocalDateTime date;
 
     private String dividend;
-
 }

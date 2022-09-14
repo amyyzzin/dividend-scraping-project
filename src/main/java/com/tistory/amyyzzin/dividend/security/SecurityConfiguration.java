@@ -2,7 +2,6 @@ package com.tistory.amyyzzin.dividend.security;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.h2.engine.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,10 +29,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-                .authorizeRequests()
-                    .antMatchers("/**/signup", "/**/signin").permitAll()
+            .authorizeRequests()
+            .antMatchers("/**/signup", "/**/signin").permitAll()
             .and()
-                .addFilterBefore(this.authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(this.authenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     public void configure(final WebSecurity web) throws Exception {
@@ -47,6 +46,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-
-
 }
