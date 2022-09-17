@@ -1,6 +1,8 @@
 package com.tistory.amyyzzin.dividend.service;
 
+import com.tistory.amyyzzin.dividend.exception.impl.AlreadyExistTickerException;
 import com.tistory.amyyzzin.dividend.exception.impl.NoCompanyException;
+import com.tistory.amyyzzin.dividend.exception.impl.NotSavedCompanyException;
 import com.tistory.amyyzzin.dividend.model.Company;
 import com.tistory.amyyzzin.dividend.model.ScrapedResult;
 import com.tistory.amyyzzin.dividend.persist.CompanyRepository;
@@ -32,8 +34,9 @@ public class CompanyService {
         boolean exists = this.companyRepository.existsByTicker(ticker);
 
         if (exists) {
-            throw new RuntimeException("already exists ticker -> " + ticker);
+            throw new AlreadyExistTickerException();
         }
+
         return this.storeCompanyAndDividend(ticker);
     }
 
@@ -47,7 +50,7 @@ public class CompanyService {
         Company company = this.yahooFinanceScraper.scrapCompanyByTicker(ticker);
 
         if (ObjectUtils.isEmpty(company)) {
-            throw new RuntimeException("failed to scrap ticker -> " + ticker);
+            throw new NoCompanyException();
         }
 
         //해당 회사가 존재 할 경우 회사의 배당금 정보를 스크래핑
@@ -86,7 +89,7 @@ public class CompanyService {
 
     public String deleteCompany(String ticker) {
         var company = this.companyRepository.findByTicker(ticker)
-            .orElseThrow(() -> new NoCompanyException());
+            .orElseThrow(() -> new NotSavedCompanyException());
 
         this.dividendRepository.deleteAllByCompanyId(company.getId());
         this.companyRepository.delete(company);

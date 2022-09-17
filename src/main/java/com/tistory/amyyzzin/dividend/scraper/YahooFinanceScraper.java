@@ -1,5 +1,6 @@
 package com.tistory.amyyzzin.dividend.scraper;
 
+import com.tistory.amyyzzin.dividend.exception.impl.NoDividendCompanyException;
 import com.tistory.amyyzzin.dividend.model.Company;
 import com.tistory.amyyzzin.dividend.model.Dividend;
 import com.tistory.amyyzzin.dividend.model.ScrapedResult;
@@ -72,6 +73,11 @@ public class YahooFinanceScraper implements Scraper{
 
         try {
             Document document = Jsoup.connect(url).get();
+
+            if (document.getElementsByTag("h1").isEmpty()) {
+                throw new NoDividendCompanyException();
+            }
+
             Element titleEle = document.getElementsByTag("h1").get(0);
             String title = titleEle.text().split(" - ")[1].trim();
 

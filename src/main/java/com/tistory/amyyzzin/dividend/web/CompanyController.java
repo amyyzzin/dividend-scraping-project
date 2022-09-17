@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.ObjectUtils;
@@ -47,9 +48,11 @@ public class CompanyController {
     public ResponseEntity<?> addCompany(@RequestBody Company request) {
 
         String ticker = request.getTicker().trim();
+
         if (ObjectUtils.isEmpty(ticker)) {
-            throw new RuntimeException("ticker is empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("티커를 입력해주세요.");
         }
+
         Company company = this.companyService.save(ticker);
         this.companyService.addAutocompleteKeyword(company.getName());
         return ResponseEntity.ok(company);
