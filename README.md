@@ -2,7 +2,7 @@
 ### 스크래핑을 통해 회사의 배당금을 조회 및 저장 할 수 있습니다.
 <div>
    <a href="https://amyyzzin.notion.site/93d6282c62ab4beab68ef9050a4935b7">
-        <text>▶ NOTION for project</text>
+        <text>▶ 나의 배당금 조회 NOTION</text>
     </a>
 </div>
 
