@@ -13,7 +13,8 @@
     <img src="https://img.shields.io/badge/Spring%20Boot-FF6600?style=flat-square&logo=springBoot&logoColor=white">
     <img src="https://img.shields.io/badge/Spring%20Data%20Jpa-6DB33F?style=flat-sqaure&logo=aqua&logoColor=white">
     <img src="https://img.shields.io/badge/Jsoup-purple?style=flat-square&logo=coffeeScript&logoColor=white">
-    <img src="https://img.shields.io/badge/MySql-4479A1?style=flat-sqaure&logo=mysql&logoColor=white">
+    <img src="https://img.shields.io/badge/Json%20Web%20Token-442e2e?style=flat-sqaure&logo=jSONWebTokens&logoColor=white">
+    <img src="https://img.shields.io/badge/Postman-4479A1?style=flat-sqaure&logo=Postman&logoColor=white">
     <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-sqaure&logo=redis&logoColor=white">
     <img src="https://img.shields.io/badge/H2-blue?style=flat-sqaure&logoColor=white">
 </div>
